@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/jquery": "^3.5.14",
+    "js-cookie": "^3.0.1"
+  }
+}
