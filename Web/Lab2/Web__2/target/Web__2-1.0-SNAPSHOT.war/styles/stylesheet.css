@@ -1,0 +1,149 @@
+body {
+    background-color: antiquewhite;
+    font-family: initial;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#hat {
+    font-family: monospace;
+    font-size: 20px;
+    text-align: left;
+    font-weight: 200;
+    color: black;
+    width: 20%;
+}
+
+#submit-btn:hover {
+    color: darkred;
+}
+
+table {
+    margin-left: 15px;
+    vertical-align: baseline;
+}
+
+#area {
+    text-align: center;
+
+}
+
+#form {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+#heading {
+    font-family: initial;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+#submit-btn {
+    font-family: initial;
+    font-size: 20px;
+    background-color: blanchedalmond;
+    margin-top: 10%;
+}
+
+#r-value {
+    font-size: 18px;
+}
+
+#y-value {
+    background-color: blanchedalmond;
+    font-size: 15px;
+}
+#x-value{
+    font-size: 18px;
+}
+
+
+#result-table {
+    font-family: initial;
+    border-collapse: separate;
+    letter-spacing: 1px;
+    height: 190%;
+    font-size: 110%;
+    background-color: #3399ff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: center;
+    font-weight: 450;
+    margin-top: 65px;
+    margin-left: 100px;
+    table-layout: fixed; width: 270%;
+}
+#result-table td{
+    width: 30%;
+}
+
+#clear {
+    margin-left: 85%;
+    margin-top: -1.7%;
+}
+
+#clear {
+    font-family: initial;
+    font-size: 22px;
+    background-color: blanchedalmond;
+    margin-top: 3%;
+    position: fixed; margin-left: 40%; margin-bottom: 300px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
+#clear:hover {
+    color: darkred;
+}
+.input-label{
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 300;
+
+}
+.message{
+    margin-left: 20px;
+    color: crimson;
+    font-family: inherit;
+}
+a:link{
+    color: darkred;
+}
+#links{
+    list-style: inside;
+}
+#result-table2{
+    font-family: initial;
+    letter-spacing: 1px;
+    border-collapse: separate;
+    background-color: #3399ff;
+    height: 35%;
+    font-size: 110%;
+    text-align: center;
+    font-weight: 450;
+    margin-top: 30px;
+    width: 95%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#clear2{
+    text-align: center;
+    font-family: initial;
+    font-size: 22px;
+    background-color: blanchedalmond;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#clear2:hover {
+    color: darkred;
+}
