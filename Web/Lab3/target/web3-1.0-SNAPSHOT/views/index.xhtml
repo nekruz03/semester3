@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Start Page</title>
+    <h:outputStylesheet library="styles" name="main.css"/>
+</h:head>
+<h:body>
+    <table id="start-table" style="text-align: center; padding-top: 2%" width="100%"  >
+        <thead>
+        <tr>
+            <th class="bio" id="firstbio" colspan="2" >Лабораторная по Веб-программированию №3</th>
+        </tr>
+        <tr>
+            <th class="bio" colspan="2"><span id="clock">00:00:00</span></th>
+        </tr>
+        <tr>
+            <th class="bio" colspan="2" >Пономарев Иван</th>
+        </tr>
+        <tr>
+            <th class="bio" colspan="2" >P32111</th>
+        </tr>
+        <tr>
+            <th class="bio" colspan="2" >Вариант: 11101</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <h:button style="margin-top: 5%; border-radius: 3px; border-color: #DEB887; background: bisque; width: 200px; height: 60px; font-size: 20px;" id="start_button" outcome="to_main" value="На главную"></h:button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</h:body>
+<h:outputScript library="scripts" name="clock.js"/>
+<h:outputScript library="scripts" name="jquery-3.6.0.js"/>
+</html>

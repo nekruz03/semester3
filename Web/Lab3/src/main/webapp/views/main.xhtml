@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+
+
+<h:head>
+    <title>Main page</title>
+    <p style="text-align: center">Главная страница</p>
+    <h:outputStylesheet library="styles" name="main.css"/>
+    <p:remoteCommand immediate="true" name="setTimezone" action="${shotsBean.setTimezone()}"/>
+    <h:outputScript>
+        window.onload = function(){
+            setTimezone([{name: 'timezone', value: (new Date()).getTimezoneOffset()}]);
+            console.log((new Date()).getTimezoneOffset());
+        }
+    </h:outputScript>
+</h:head>
+
+<h:body>
+    <table id="main_table">
+        <tr>
+            <td>
+                <h:form id="input_form">
+                    <div id="x-values">
+                        <h:outputLabel for="value_x" value="Выберите X:"></h:outputLabel>
+                        <p:inputNumber type="hidden"  id="value_x" value="#{shotsBean.shot.x}"></p:inputNumber>
+                    </div>
+                    <div>
+                        <br>
+                        <h:commandButton styleClass="x_value" value="-3" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="-2" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="-1" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="0" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="1" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="2" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="3" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="4" type="button" onclick="setX(this)"></h:commandButton>
+                        <h:commandButton styleClass="x_value" value="5" type="button" onclick="setX(this)"></h:commandButton>
+                        </br>
+                    </div>
+                    <br></br>
+                    <div>
+                        <h:outputLabel for="value_y" value="Y value [-3, 5]:"/>
+                    </div>
+                    <br></br>
+                    <div>
+                        <p:inputNumber id="value_y"
+                                       value="#{shotsBean.shot.y}"
+                                       decimalPlaces="2"
+                                       maxValue="5"
+                                       minValue="-3">
+                        </p:inputNumber>
+                    </div>
+                    <br></br>
+                    <div>
+                        <h:outputLabel for="value_r" value="Выберите R:"></h:outputLabel>
+                        <p:inputText id="value_r" value="#{shotsBean.shot.r}" required="true" style="display: none;"/>
+                    </div>
+                    <br></br>
+                    <fieldset>
+                    <div id="r_values">
+                        <p:commandLink class="value_r" update="value_r" onclick="setRForPlot(1)" action="#{shotsBean.setFirstRValue()}" oncomplete="changingPlot()">
+                            <h:outputText value="1" />
+                        </p:commandLink>
+                        <p:commandLink class="value_r" update="value_r" onclick="setRForPlot(1.5)" action="#{shotsBean.setSecondRValue()}" oncomplete="changingPlot()">
+                            <h:outputText value="1.5" />
+                        </p:commandLink>
+                        <p:commandLink class="value_r" update="value_r" onclick="setRForPlot(2)" action="#{shotsBean.setThirdRValue()}" oncomplete="changingPlot()">
+                            <h:outputText value="2" />
+                        </p:commandLink>
+                        <p:commandLink class="value_r" update="value_r" onclick="setRForPlot(2.5)" action="#{shotsBean.setFourthRValue()}" oncomplete="changingPlot()">
+                            <h:outputText value="2.5" />
+                        </p:commandLink>
+                        <p:commandLink class="value_r" update="value_r" onclick="setRForPlot(3)" action="#{shotsBean.setFifthRValue()}" oncomplete="changingPlot()">
+                            <h:outputText value="3" />
+                        </p:commandLink>
+                    </div>
+                    </fieldset>
+                    <br/>
+
+                    <div>
+                        <h:commandButton type="submit"
+                                         value="Подтвердить"
+                                         id="form_button_submit"
+                                         style="margin: 10px; background: bisque; border-color: #DEB887;"
+                        >
+                            <p:ajax process="@form"
+                                    listener="${shotsBean.add()}"
+                                    update="results, panelGridPlot, value_x"
+                                    />
+                        </h:commandButton>
+                        <br/>
+                        <h:commandButton id="clean-button" type="button" value="Очистить" style="width: 100px; margin: 10px; background: bisque; border-color: #DEB887;" >
+                            <p:ajax listener="#{shotsBean.clear()}" update="results, panelGridPlot"/>
+                        </h:commandButton>
+                    </div>
+                    <div>
+                        <h:button outcome="to_index" value="На стартовую" style="width: 160px; margin: 10px; background: bisque; border-color: #DEB887;"/>
+                    </div>
+
+                </h:form>
+                <label id="validationLabel"></label>
+            </td>
+            <td>
+                <h:panelGrid id="panelGridPlot">
+                    <ui:include src="plot.xhtml"/>
+                </h:panelGrid>
+            </td>
+        </tr>
+        <tr>
+            <h:panelGrid>
+                <p:dataTable id="results" var="shot" value="#{shotsBean.shotsList}" tableStyle="text-align: center;">
+                    <p:column styleClass="table-value" headerText="X" style="text-align: center">
+                        <h:outputText id="table-valueX" value="#{shot.x}"/>
+                    </p:column>
+
+                    <p:column styleClass="table-value" headerText="Y" style="text-align: center">
+                        <h:outputText id="table-valueY" value="#{shot.y}"/>
+                    </p:column>
+
+                    <p:column styleClass="table-value" id="table-valueR" headerText="R" style="text-align: center">
+                        <h:outputText value="#{shot.r}"/>
+                    </p:column>
+                    <p:column styleClass="table-value" id="table-currentTime" headerText="Текущее время" style="text-align: center">
+                        <h:outputText value="#{shot.currentTime}"/>
+                    </p:column>
+                    <p:column styleClass="table-value" id="table-scriptTime" headerText="Время выполнения" style="text-align: center">
+                        <h:outputText value="#{shot.scriptTime}"/>
+                    </p:column>
+                    <p:column styleClass="table-value" id="table-status" headerText="Попадание" style="text-align: center">
+                        <h:outputText value="#{shot.status}" style="text-transform: uppercase"/>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+        </tr>
+    </table>
+</h:body>
+<h:outputScript library="scripts" name="main.js"/>
+<h:outputScript library="scripts" name="jquery-3.6.0.js"/>
+</html>

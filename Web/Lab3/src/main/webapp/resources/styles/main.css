@@ -1,0 +1,58 @@
+.ui-commandlink{
+    margin: 20px;
+}
+svg{
+    margin-left: 500px;
+}
+body {
+    background-color: antiquewhite;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.table-value{
+    background-color: #DEB887 !important;
+    color: black !important;
+    font-family: initial;
+    letter-spacing: 1px;
+    border-collapse: separate;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#results{
+    table-layout: fixed; width: 100%;
+}
+
+.x_value{
+    margin: 5px;
+    border-radius: 3px;
+    border-color: #DEB887;
+    background: #DEB887 ;
+}
+.x_value:hover{
+    color: bisque;
+}
+.value_r{
+    color: saddlebrown !important;
+}
+fieldset{
+    border: solid #DEB887;
+}
+
+.bio{
+    color: #2E2F45;
+    font-size: 50px;
+    text-align: center;
+    padding: 5px 40px;
+    font-family: monospace;
+}
+#start_button:hover{
+    color: #DEB887;
+}
+
+
+
+
