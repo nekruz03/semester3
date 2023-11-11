@@ -8,8 +8,8 @@ AreaCheckServlet, осуществляющий проверку попадани
 
 ## Использованные технологии
 
-*Java Servlet Pages
+- Java Servlet Pages
 
-*Java Servlets
+- Java Servlets
 
-*CSS/HTML/JS
+- CSS/HTML/JS
